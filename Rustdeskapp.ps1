@@ -1,15 +1,15 @@
 
 ############################## Defines network folder, local folder and executable paths ##########################
 
-Unblock-File "\\arquivosdti.clickip.local\automacao_dados\pyinstall\Rustdeskapp.exe"
+Unblock-File "path-to-unc-rustdesk-executable"
 
-$rustdeskNetwork = "\\arquivosdti.clickip.local\automacao_dados\RustdeskalternativeISO\Rustdesk"
+$rustdeskNetwork = "unc-path-to-rustdesk-folder"
 
 $destinationRustdesk = "C:\"
 
 $rustdeskExecutable = "C:\Rustdesk\rustdesk.exe"
 
-$rustdesknetworkexecutable = "\\arquivosdti.clickip.local\automacao_dados\RustdeskalternativeISO\Rustdesk\rustdesk.exe"
+$rustdesknetworkexecutable = "unc-path-to-rustdesk-executable"
 
 
 ######################################### Get current user #################################################
@@ -93,11 +93,11 @@ if ($null -eq $service) {
 
     # Run the service creation command with elevated credentials
 
-    $Domain = "clickip"  # Replace with your actual domain name
+    $Domain = "your-domain"  # Replace with your actual domain name
 
-    $User = "$Domain\Richard.silva"  # Domain and username
+    $User = "$Domain\admin-username"  # Domain and username (needs to have local admin to create windows service)
 
-    $Password = "Ri21851619!"  # Replace with the actual password
+    $Password = "admin-password"  # Replace with the actual password
 
     $SecurePassword = ConvertTo-SecureString $Password -AsPlainText -Force
 
@@ -147,7 +147,7 @@ for ($i = 1; $i -le $iterations; $i++) {
 ########################################## Stop the current script process ###############################################
 
 
-pause
+stop-process -id $PID 
 
 
 
